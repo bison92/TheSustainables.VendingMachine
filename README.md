@@ -1,5 +1,7 @@
 # TheSustainables.VendingMachine
 
+![Travis-CI build status](https://travis-ci.com/bison92/TheSustainables.VendingMachine.svg?branch=master)
+
 ## Description
 We would like you to create a model of virtual [vending machine](https://en.wikipedia.org/wiki/Vending_machine).
 Complex UI is not required, just make sure that the requirements are covered. 
