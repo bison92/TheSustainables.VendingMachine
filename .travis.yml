@@ -6,7 +6,7 @@ dotnet: 2.2
 script:
     - dotnet restore
     - dotnet build
-    - dotnet test TheSustainables.VendingMachine.Domain.Tests\TheSustainables.VendingMachine.Domain.Tests.csproj
+    - dotnet test TheSustainables.VendingMachine.Domain.Tests/TheSustainables.VendingMachine.Domain.Tests.csproj
 global:
     - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
     - DOTNET_CLI_TELEMETRY_OPTOUT=1
