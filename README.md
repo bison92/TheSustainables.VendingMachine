@@ -23,17 +23,17 @@ At the start the vending machine wallet contains the following coins (for exchan
 The customer has an unlimited supply of coins.
 
 ## Vending machine should support the following features:
-*Accept coins*
-Customer should be able to insert coins to the vending machine.
-*Return coins*
-Customer should be able to take the back the inserted coins in case customer decides to cancel his purchase.
-*Sell a product*
-Customer should be able to buy a product:
-* If the product price is less than the deposited amount, Vending machine should show a message ìThank youî and return the difference between the inserted amount and the price using the smallest number of coins possible.
-* If the product price is higher than the amount inserted, Vending machine should show a message ìInsufficient amountî
+
+*Accept coins* Customer should be able to insert coins to the vending machine.
+
+*Return coins* Customer should be able to take the back the inserted coins in case customer decides to cancel his purchase.
+
+*Sell a product* Customer should be able to buy a product:
+* If the product price is less than the deposited amount, Vending machine should show a message ‚ÄúThank you‚Äù and return the difference between the inserted amount and the price using the smallest number of coins possible.
+* If the product price is higher than the amount inserted, Vending machine should show a message ‚ÄúInsufficient amount‚Äù
 The amount and type of coins returned should be shown by the UI.
 
-Backend works in cents so 3.20Ä its 320 cents in backend, for simplicity. 
+Backend works in cents so 3.20‚Ç¨ its 320 cents in backend, for simplicity. 
 
 ## Third Party Libraries 
 
