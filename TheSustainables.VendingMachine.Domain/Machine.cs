@@ -60,7 +60,7 @@ namespace TheSustainables.VendingMachine.Domain
                         UserCashTray.Empty();
                         return change;
                     }
-                    throw new UnacceptableReturnAmountException("Unable to return the requested ammout with the available coins");
+                    throw new UnacceptableReturnAmountException("Unable to return the requested amout with the available coins");
                 }
                 throw new NotEnoughCreditException("Not enough credit");
             }

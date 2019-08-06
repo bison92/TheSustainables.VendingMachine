@@ -1,6 +1,6 @@
 # TheSustainables.VendingMachine
 
-![Travis-CI build status](https://travis-ci.com/bison92/TheSustainables.VendingMachine.svg?branch=master)
+[![Travis-CI build status](https://travis-ci.com/bison92/TheSustainables.VendingMachine.svg?branch=master)](https://travis-ci.com/bison92/TheSustainables.VendingMachine.svg?branch=master)
 
 ## Description
 We would like you to create a model of virtual [vending machine](https://en.wikipedia.org/wiki/Vending_machine).
@@ -44,4 +44,10 @@ The amount and type of coins returned should be shown by the UI.
 
 ## Comments
 
-Backend works in cents so 3.20€ its 320 cents in backend, for simplicity. 
+Backend works in cents so 3.20€ its 320 cents in backend.
+
+Sell operation is executed only if there's enough stock and enough change.
+
+I've also added errors for "Not enough Stock" and "Not enough change"
+
+If I've got more time I would like to add some more tests, specially the Sell method and the frontend code. Also the UI is quite ugly, but functional (and responsive).

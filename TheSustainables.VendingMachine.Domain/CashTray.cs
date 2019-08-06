@@ -132,13 +132,13 @@ namespace TheSustainables.VendingMachine.Domain
                         }
                         if (i == NonEmptySlotsOrderedDesc.Length - 1)
                         {
-                            throw new UnacceptableReturnAmountException("Unable to return the requested ammout with the available coins.");
+                            throw new UnacceptableReturnAmountException("Unable to return the requested amout with the available coins.");
                         }
                     }
                 }
                 else
                 {
-                    throw new UnacceptableReturnAmountException("Unable to return the requested ammout with the available coins.");
+                    throw new UnacceptableReturnAmountException("Unable to return the requested amout with the available coins.");
                 }
             }
             return result;
