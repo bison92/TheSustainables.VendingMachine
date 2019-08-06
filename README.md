@@ -1,6 +1,6 @@
 # TheSustainables.VendingMachine
 
-[![Travis-CI build status](https://travis-ci.com/bison92/TheSustainables.VendingMachine.svg?branch=master)](https://travis-ci.com/bison92/TheSustainables.VendingMachine.svg?branch=master)
+[![Travis-CI build status](https://travis-ci.com/bison92/TheSustainables.VendingMachine.svg?branch=master)](https://travis-ci.com/bison92/TheSustainables.VendingMachine)
 
 ## Description
 We would like you to create a model of virtual [vending machine](https://en.wikipedia.org/wiki/Vending_machine).
