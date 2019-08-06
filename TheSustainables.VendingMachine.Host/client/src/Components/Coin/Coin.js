@@ -1,8 +1,11 @@
-﻿import React from 'react';
-import './Coin.css';
+﻿import React from 'react'
+import './Coin.css'
 const coin = (props) => {
-    let className = "coin";
+    let className = "coin"
     switch (props.value) {
+        default:
+            className = ""
+            break
         case 200:
             className += " coin_2_euro"
             break
@@ -28,7 +31,7 @@ const coin = (props) => {
             className += " coin_1_cent"
             break
     }
-    return (<div role="coin" className={className}></div>)
+    return (<div className={className}></div>)
 }
 
 export default coin

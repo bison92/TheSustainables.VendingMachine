@@ -4,21 +4,21 @@ using System.Runtime.Serialization;
 namespace TheSustainables.VendingMachine.Domain.Exceptions
 {
     [Serializable]
-    public class UnacceptableReturnAmmountException : Exception
+    public class UnacceptableReturnAmountException : Exception
     {
-        public UnacceptableReturnAmmountException()
+        public UnacceptableReturnAmountException()
         {
         }
 
-        public UnacceptableReturnAmmountException(string message) : base(message)
+        public UnacceptableReturnAmountException(string message) : base(message)
         {
         }
 
-        public UnacceptableReturnAmmountException(string message, Exception innerException) : base(message, innerException)
+        public UnacceptableReturnAmountException(string message, Exception innerException) : base(message, innerException)
         {
         }
 
-        protected UnacceptableReturnAmmountException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected UnacceptableReturnAmountException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

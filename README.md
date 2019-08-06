@@ -9,13 +9,14 @@ Also would be beneficial to briefly describe what you would do differently if yo
 
 In the case of a missing requirement please come up with a reasonable solution and document your decision.
 
-##Initial data
+## Initial data
 
 Vending machine contains the following products:
 * Tea (1.30 eur), 10 portions
 * Espresso (1.80 eur), 20 portions
 * Juice  (1.80 eur), 20 portions
 * Chicken soup (1.80 eur), 15 portions
+
 At the start the vending machine wallet contains the following coins (for exchange):
 * 10 cent, 100 coins
 * 20 cent, 100 coins
@@ -35,9 +36,12 @@ The customer has an unlimited supply of coins.
 * If the product price is higher than the amount inserted, Vending machine should show a message “Insufficient amount”
 The amount and type of coins returned should be shown by the UI.
 
-Backend works in cents so 3.20€ its 320 cents in backend, for simplicity. 
-
 ## Third Party Libraries 
 
 * Serilog AspNetCore [(github)](https://github.com/serilog/serilog-aspnetcore)
 * NSwag [(github)](https://github.com/RicoSuter/NSwag)
+
+
+## Comments
+
+Backend works in cents so 3.20€ its 320 cents in backend, for simplicity. 

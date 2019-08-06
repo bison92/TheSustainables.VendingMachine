@@ -15,7 +15,89 @@ namespace TheSustainables.VendingMachine.Domain.Tests
 
         public new IDictionary<Coin, int> Slots => base.Slots;
     }
+    public class CanReturnAmountCashTrayData : IEnumerable<object[]>
+    {
+        private readonly List<object[]> _data = new List<object[]>
+        {
+            new object[]
+            {
+                100,
+                false,
+                new CashTrayForTesting(new Dictionary<Coin, int>() {
+                    { new Coin(10), 0 },
+                    { new Coin(20), 0 },
+                    { new Coin(50), 1 },
+                    {new Coin(100), 0 }
+                }),
+                new CashTrayForTesting(new Dictionary<Coin, int>() {
+                    { new Coin(10), 0 },
+                    { new Coin(20), 0 },
+                    { new Coin(50), 1 },
+                    {new Coin(100), 0 }
+                })
+            },
+            new object[]
+            {
+                55,
+                false,
+                new CashTrayForTesting(new Dictionary<Coin, int>() {
+                    { new Coin(10), 0 },
+                    { new Coin(20), 0 },
+                    { new Coin(50), 1 },
+                    {new Coin(100), 0 }
+                }),
+                new CashTrayForTesting(new Dictionary<Coin, int>() {
+                    { new Coin(10), 0 },
+                    { new Coin(20), 0 },
+                    { new Coin(50), 1 },
+                    {new Coin(100), 0 }
+                })
+            },
+            new object[]
+            {
+                100,
+                true,
+                new CashTrayForTesting(new Dictionary<Coin, int>() {
+                    { new Coin(10), 0 },
+                    { new Coin(20), 0 },
+                    { new Coin(50), 0 },
+                    {new Coin(100), 1 }
+                }),
+                new CashTrayForTesting(new Dictionary<Coin, int>() {
+                    { new Coin(10), 0 },
+                    { new Coin(20), 0 },
+                    { new Coin(50), 0 },
+                    {new Coin(100), 1 }
+                })
+            },
+            new object[]
+            {
+                100,
+                true,
+                new CashTrayForTesting(new Dictionary<Coin, int>() {
+                    { new Coin(10), 0 },
+                    { new Coin(20), 0 },
+                    { new Coin(50), 0 },
+                    {new Coin(100), 1 }
+                }),
+                new CashTrayForTesting(new Dictionary<Coin, int>() {
+                    { new Coin(10), 0 },
+                    { new Coin(20), 0 },
+                    { new Coin(50), 0 },
+                    {new Coin(100), 1 }
+                })
+            }
+        };
+        public IEnumerator<object[]> GetEnumerator()
+        {
+            return _data.GetEnumerator();
+        }
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
     public class CashTrayData : IEnumerable<object[]>
     {
         private readonly List<object[]> _data = new List<object[]>
@@ -137,11 +219,25 @@ namespace TheSustainables.VendingMachine.Domain.Tests
 
     public class CashTrayTests
     {
+
+        [Theory]
+        [ClassData(typeof(CanReturnAmountCashTrayData))]
+        internal void CashTray_CanReturnChange_ReturnsCorrectResult(int amountToBeReturned, bool expectedResult, CashTrayForTesting beforeCashTray, CashTrayForTesting afterCashTray)
+        {
+            var result = beforeCashTray.CanReturnChange(amountToBeReturned, out var change);
+            Assert.True(result == expectedResult);
+            Assert.True(beforeCashTray.Slots[new Coin(100)] == afterCashTray.Slots[new Coin(100)]);
+            Assert.True(beforeCashTray.Slots[new Coin(50)] == afterCashTray.Slots[new Coin(50)]);
+            Assert.True(beforeCashTray.Slots[new Coin(20)] == afterCashTray.Slots[new Coin(20)]);
+            Assert.True(beforeCashTray.Slots[new Coin(10)] == afterCashTray.Slots[new Coin(10)]);
+        }
+
+
         [Theory]
         [ClassData(typeof(CashTrayData))]
-        internal void CashTray_ReturnChange_ReturnsCorrectAmmountWhenPossible(int ammoutToBeReturned, List<Coin> expectedCoins, CashTrayForTesting beforeCashTray, CashTrayForTesting afterCashTray)
+        internal void CashTray_ReturnChange_ReturnsCorrectAmountWhenPossible(int amoutToBeReturned, List<Coin> expectedCoins, CashTrayForTesting beforeCashTray, CashTrayForTesting afterCashTray)
         {
-            var result = beforeCashTray.ReturnChange(ammoutToBeReturned);
+            var result = beforeCashTray.ReturnChange(amoutToBeReturned);
             Assert.True(AreListsEqual(result, expectedCoins));
             Assert.True(beforeCashTray.Slots[new Coin(100)] == afterCashTray.Slots[new Coin(100)]);
             Assert.True(beforeCashTray.Slots[new Coin(50)] == afterCashTray.Slots[new Coin(50)]);
@@ -159,14 +255,14 @@ namespace TheSustainables.VendingMachine.Domain.Tests
                     { new Coin(100), 1 }
                 });
 
-            Assert.Throws<UnacceptableReturnAmmountException>(() =>
+            Assert.Throws<UnacceptableReturnAmountException>(() =>
             {
                 var result = CashTray.ReturnChange(120);
             });
         }
 
         [Fact]
-        internal void CashTray_ReturnChange_ThrowsExceptionWhenNotReturnableAmmount()
+        internal void CashTray_ReturnChange_ThrowsExceptionWhenNotReturnableAmount()
         {
             var CashTray = new CashTrayForTesting(new Dictionary<Coin, int>() {
                     { new Coin(10), 1 },
@@ -175,7 +271,7 @@ namespace TheSustainables.VendingMachine.Domain.Tests
                     { new Coin(100), 1 }
                 });
 
-            Assert.Throws<UnacceptableReturnAmmountException>(() =>
+            Assert.Throws<UnacceptableReturnAmountException>(() =>
             {
                 var result = CashTray.ReturnChange(101);
             });

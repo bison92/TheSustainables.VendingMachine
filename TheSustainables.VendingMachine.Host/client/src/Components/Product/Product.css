@@ -1,1 +1,10 @@
-﻿
+﻿.product {
+    margin: 1vh 0vh;
+    text-align: left;
+}
+
+    .product:hover {
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }

@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using TheSustainables.VendingMachine.Domain.Exceptions;
 
 namespace TheSustainables.VendingMachine.Domain
 {
     public class Machine
     {
+        private CashTray CashTray { get; set; } = new CashTray();
+        private CashTray CombinedCashTray => CashTray.Merge(UserCashTray);
         /// <summary>
         /// <para>
         /// Initializes a new instance of the <see cref="Machine"/> class with the inital data specified in the assignment.
@@ -24,7 +28,7 @@ namespace TheSustainables.VendingMachine.Domain
         ///     <item>1 euro, 100 coins<br /></item>
         ///   </list>
         /// </summary>
-        
+
         public Machine()
         {
             //stock
@@ -38,11 +42,37 @@ namespace TheSustainables.VendingMachine.Domain
             CashTray.AddCash(new Coin(50), 100);
             CashTray.AddCash(new Coin(100), 100);
         }
+
+        public List<Coin> Sell(Guid productId)
+        {
+            try
+            {
+                var product = AvailableProducts.First(p => p.Id == productId);
+                var credit = UserCashTray.GetTotalCashInTray();
+                if (credit >= product.Price)
+                {
+                    var remainder = credit - product.Price;
+                    if (CombinedCashTray.CanReturnChange(remainder, out var change))
+                    {
+                        Stock.SubstractStock(product.Id, 1);
+                        CombinedCashTray.RemoveCoins(change);
+                        this.CashTray = CombinedCashTray;
+                        UserCashTray.Empty();
+                        return change;
+                    }
+                    throw new UnacceptableReturnAmountException("Unable to return the requested ammout with the available coins");
+                }
+                throw new NotEnoughCreditException("Not enough credit");
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new UnknownProductIdException($"No product with Id {productId} was found.", ex);
+            }
+        }
+
         public Guid Id { get; set; }
         public IEnumerable<Product> AvailableProducts => Stock.GetAvailableProducts();
         public Stock Stock { get; } = new Stock();
-        public CashTray CashTray { get; } = new CashTray();
         public CashTray UserCashTray { get; } = new CashTray();
-        public CashTray CombinedCashTray => CashTray.Merge(UserCashTray);
     }
 }

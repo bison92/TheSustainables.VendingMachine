@@ -2,14 +2,15 @@
 
 namespace TheSustainables.VendingMachine.Domain
 {
-    /// <summary>Coin class representing a coin with a fixed value. ie: 5c coin</summary>
+    /// <summary>Coin struct representing a coin with a fixed value. ie: 5c coin</summary>
     public struct Coin
     {
         public Coin(int value)
         {
             Value = value;
         }
-        /// <summary>Gets or sets the value in cents.</summary>
+
+        /// <summary>Gets the value in cents.</summary>
         /// <value>The value in cents.</value>
         public int Value { get; }
 

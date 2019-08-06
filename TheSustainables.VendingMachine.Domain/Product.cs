@@ -8,7 +8,10 @@ namespace TheSustainables.VendingMachine.Domain
         {
             Name = name;
             Price = price;
+            Id = Guid.NewGuid();
         }
+
+        public Guid Id { get; }
         public string Name { get; }
         public int Price { get; }
 

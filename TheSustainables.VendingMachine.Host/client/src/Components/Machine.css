@@ -1,1 +1,79 @@
-﻿
+﻿@font-face {
+    font-family: "LCD";
+    src: url("../Assets/Fonts/lcd.eot"); /* IE9*/
+    src: url("../Assets/Fonts/lcd-fix.eot") format("embedded-opentype"), /* IE6-IE8 */
+    url("../Assets/Fonts/lcd.woff2") format("woff2"), /* chrome firefox */
+    url("../Assets/Fonts/lcd.woff") format("woff"), /* chrome firefox */
+    url("../Assets/Fonts/lcd.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+    url("../Assets/Fonts/lcd.svg") format("svg"); /* iOS 4.1- */
+}
+
+.machine {
+    margin-top: 2vh;
+    background-color: #3a3f49;
+    border-radius: 2vh 2vh;
+}
+
+.showcase {
+    padding: 1vh;
+    background-color: rgba(255,255,255,0.3);
+    margin: 2vh;
+    border-radius: 1vh 1vh;
+}
+
+
+.panel {
+    background-color: #989f77;
+    padding:1vh;
+    margin-top:1vh;
+}
+
+.lcdText {
+    font-family: 'LCD', sans-serif;
+    color: red;
+    background-color: #3d1d1d;
+    padding: 1px;
+    letter-spacing: 2px;
+    margin-bottom:1vh;
+}
+
+.insertCoin {
+    background-color: #989f77;
+    border: 3px dashed black;
+    padding: 4vh 0vh;
+}
+
+.returnButton {
+    margin-top:1vh;
+}
+
+
+.tray {
+    color: #808080;
+    background-color: #333740;
+    box-shadow: inset 15px 15px 18px rgba(0,0,0,0.5);
+    margin: 1vh auto;
+    height: 90px;
+    width: 75px;
+
+    cursor: pointer;
+}
+
+.tray-product {
+    background: url('../Assets/Images/plastic-cup.png') #333740;
+    background-position: 50% 80%;
+    background-repeat: no-repeat;
+}
+
+.tray-cover {
+    border-radius: 2px 2px;
+    background-color: rgba(255,255,255, 0.5);
+    z-index: 1;
+    height: 90px;
+    width: 75px;
+    transition: max-height .5s ease-in;
+}
+
+    .tray-cover:active {
+        max-height: 10px;
+    }
