@@ -51,3 +51,5 @@ Sell operation is executed only if there's enough stock and enough change.
 I've also added errors for "Not enough Stock" and "Not enough change"
 
 If I've got more time I would like to add some more tests, specially the Sell method and the frontend code. Also the UI is quite ugly, but functional (and responsive).
+
+Also this application does not support simulatneous users, and as an actual real-world vending machine, I was thinking of using signal-r to control how many people is actually connected to the site and make they wait on a queue like style. (Like in the real world you can't use a vending machine while other person is using it).
