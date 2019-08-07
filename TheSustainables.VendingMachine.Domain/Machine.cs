@@ -55,8 +55,8 @@ namespace TheSustainables.VendingMachine.Domain
                     if (CombinedCashTray.CanReturnChange(remainder, out var change))
                     {
                         Stock.SubstractStock(product.Id, 1);
-                        CombinedCashTray.RemoveCoins(change);
                         this.CashTray = CombinedCashTray;
+                        this.CashTray.RemoveCoins(change);
                         UserCashTray.Empty();
                         return change;
                     }
